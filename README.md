@@ -31,15 +31,10 @@ Kick off your project with this boilerplate which is based on [BoilerplateV](htt
 
     ```shell
     cd my-boilerplatev-starter/
-    gatsby develop
+    yarn dev
     ```
 
-    or
-
-    ```shell
-    cd my-boilerplatev-starter/
-    yarn d
-    ```
+    _`yarn dev`_ or _`yarn d`_ will run `gatsby develop`.
 
 1.  **Open the source code and start editing!**
 
@@ -119,6 +114,18 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
     ```shell
     cd C:\dev\my-boilerplatev-starter
+    ```
+
+-   **Running `gatsby develop` produces an error "Cannot find module 'webpack/package.json"**
+
+    This issue has been reported on Github [here](https://github.com/marcobiedermann/gatsby-plugin-svg-sprite/issues/9). To fix it, Add a `resolutions` in `package.json` to enforce svg-sprite-loader version to 4.1.3
+
+    ```json
+    {
+    	"resolutions": {
+    		"svg-sprite-loader": "4.3.1"
+    	}
+    }
     ```
 
 ## 💫 Deploy

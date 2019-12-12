@@ -1,0 +1,83 @@
+// generate font-size and line-height based on line-height in pixel
+@mixin fzlh($fz, $lh){
+	font-size: $fz;
+	line-height: ($lh / $fz);
+}
+
+@mixin fontfamily2{
+	font-family: Poppins, Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+@mixin h1{
+	@include fontfamily2;
+	@include fzlh($h1-font-size, 64px);
+	font-weight: 700;
+}
+@mixin h2 {
+	@include fontfamily2;
+	@include fzlh($h2-font-size, 48px);
+	font-weight: 700;
+}
+@mixin h3 {
+	@include fontfamily2;
+	@include fzlh($h3-font-size, 40px);
+	font-weight: 700;
+}
+@mixin h4 {
+	@include fontfamily2;
+	@include fzlh($h4-font-size, 36px);
+	font-weight: 700;
+}
+@mixin h5 {
+	@include fontfamily2;
+	@include fzlh($h5-font-size, 24px);
+	font-weight: 700;
+}
+@mixin h6 {
+	@include fontfamily2;
+	@include fzlh($h6-font-size, 24px);
+	font-weight: 700;
+}
+
+
+@mixin fsblockquote{
+	$font-size: 23px;
+	font-style: italic;
+	@include fzlh($font-size, 36px);
+}
+
+@mixin fslead{
+	$font-size: 25px;
+	@include fzlh($font-size, 40px);
+	@include fontfamily2;
+}
+
+@mixin fsbodyregular{
+	$font-size: 16px;
+	@include fzlh($font-size, 28px);
+}
+
+@mixin fssmall{
+	$font-size: 13px;
+	@include fzlh($font-size, 24px);
+}
+
+@mixin fsbtn{
+	@include fzlh(15px, 24px);
+	letter-spacing: .05rem;
+	font-weight: 600;
+}
+
+@mixin fsstats {
+	@include fzlh(90px, 96px);
+	@include fontfamily2;
+	font-weight: 700;
+}
+
+@mixin fssubtitle{
+	@include fzlh(13px, 20px);
+	@include fontfamily2;
+	font-weight: 700;
+	letter-spacing: .25rem;
+	text-transform: uppercase;
+}

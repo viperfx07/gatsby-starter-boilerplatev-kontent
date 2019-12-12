@@ -1,0 +1,48 @@
+.footer {
+	padding-bottom: 102px;
+	padding-top: 37px;
+	@include mq(sm) {
+		padding-top: 48px;
+	}
+	@include mq(md) {
+		padding-top: 54px;
+	}
+	&__menu {
+		@include fontfamily2;
+	}
+	&__submenu {
+		&:hover,
+		&:focus {
+			color: #fff;
+		}
+	}
+	&__form {
+		&-input {
+			&#{&} {
+				padding-right: 24px;
+				&:focus ~ :global(.BaseTextInput__input-label) {
+					color: #fff;
+				}
+			}
+			& ~ :global(.BaseTextInput__input-border) {
+				opacity: 0;
+			}
+		}
+		&-btn {
+			width: 24px;
+			height: 24px;
+		}
+	}
+	&__leftinfo {
+		a {
+			color: inherit;
+			&:hover,
+			&:focus {
+				color: #fff;
+			}
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+}

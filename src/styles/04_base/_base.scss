@@ -1,0 +1,166 @@
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+::selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+/* crit:start */
+
+*,
+*:before,
+*:after {
+	flex: 0 1 auto;
+}
+
+html {
+	font-size: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-ms-overflow-style: scrollbar;
+}
+
+body {
+	min-height: 100vh;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+input {
+	border-radius: 0;
+	background-color: transparent;
+	border: 0;
+	/* crit */
+	&[type='search'],
+	&[type='text'],
+	&[type='password'],
+	&[type='tel'],
+	&[type='number'],
+	&[type='email'] {
+		box-sizing: border-box;
+		width: 100%;
+		padding: 8px 0;
+		min-height: 42px;
+		border-bottom: 1px solid $tertiary;
+	}
+
+	&:invalid {
+		// remove red border on invalid input on mozilla
+		box-shadow: none;
+		/* crit */
+	}
+
+	&::placeholder {
+		color: rgba($text, 0.8);
+		/* crit */
+	}
+
+	&.error {
+	}
+
+	&::-ms-clear {
+		display: none;
+	}
+}
+
+table:not(.u-table-unstyled) {
+	width: 100%;
+	td,
+	th {
+		padding: 15px;
+		&:first-child {
+			padding-left: 0;
+		}
+	}
+	th {
+		color: $text;
+		text-align: left;
+	}
+	tr {
+		border-bottom: 1px solid $border;
+	}
+	thead {
+		tr {
+			border-bottom: 3px solid $border;
+		}
+	}
+}
+
+select,
+textarea {
+	// Prevent ios default box shadow and radius
+	border: 0;
+	appearance: none;
+	border-radius: 0;
+	display: block;
+	padding: 8px 0;
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid $tertiary;
+
+	&:disabled {
+		opacity: 0.5;
+	}
+
+	&:focus {
+		background-color: #fff;
+	}
+}
+
+select {
+	border-radius: 0;
+	background: #fff url('/www_shared/assets/img/chevron-down.svg')
+		calc(100% - 16px) 50% no-repeat;
+	background-size: 12px auto;
+	&::-ms-expand {
+		display: none;
+	}
+}
+
+textarea {
+	overflow: auto;
+	resize: none;
+	resize: vertical;
+}
+
+img,
+video {
+	max-width: 100%;
+	height: auto;
+
+	&[data-sizes='auto'] {
+		display: block;
+		width: 100%;
+	}
+}
+
+/* purgecss start ignore */
+video {
+	object-fit & {
+		max-width: none !important;
+	}
+}
+/* purgecss end ignore */
+
+a {
+	transition: 0.5s;
+}
+
+input:-webkit-autofill {
+	background-color: transparent !important;
+}

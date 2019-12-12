@@ -1,0 +1,43 @@
+.header {
+    @include mq(md) {
+        z-index: 1;
+    }
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @if (map-get($header-heights, $breakpoint) !=null) {
+            @include mq-up($breakpoint) {
+                height: #{map-get($header-heights, $breakpoint)};
+            }
+        }
+    }
+    &__menu {
+        @include fontfamily2;
+        @include mq-down(sm) {
+            opacity: 0;
+            z-index: -1;
+            transition: z-index 0.1s 0.5s, opacity 0.5s;
+            width: 100%;
+        }
+        @include mq(md) {
+            height: auto;
+            background-color: transparent;
+            top: map-get($header-heights, md);
+        }
+         :global(.is-mobilemenu-active) & {
+            opacity: 1;
+            z-index: 999;
+            transition: z-index 0.1s, opacity 0.5s 0.1s;
+        }
+    }
+    &__mobiletoggle {
+        z-index: 1000;
+    }
+    &__logo {
+        z-index: 1000;
+    }
+}
+
+.navlink {
+    &Active {
+        font-weight: 700;
+    }
+}

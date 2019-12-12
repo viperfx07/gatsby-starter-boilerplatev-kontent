@@ -1,0 +1,16 @@
+/* crit:start */
+// If loading fonts from localhost/server
+// set the font files and paths in settings.fonts.scss
+
+// @each $map in $fonts {
+// 	@include font-face(
+// 		map-get($map, name),
+// 		map-get($map, path),
+// 		map-get($map, weight),
+// 		map-get($map, style),
+// 		(woff2 woff),
+// 		map-get($map, display),
+// 		map-get($map, localnames)
+// 	);
+// }
+/* crit:end */

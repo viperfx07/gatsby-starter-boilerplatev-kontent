@@ -1,0 +1,64 @@
+
+// helper function to get the correct font group
+@function iconfont-group($group: null) {
+  @if (null == $group) {
+    $group: nth(map-keys($__iconfont__data), 1);
+  }
+  @if (false == map-has-key($__iconfont__data, $group)) {
+    @warn 'Undefined Iconfont Family!';
+    @return ();
+  }
+  @return map-get($__iconfont__data, $group);
+}
+
+// helper function to get the correct icon of a group
+@function iconfont-item($name) {
+  $slash: str-index($name, '/');
+  $group: null;
+  @if ($slash) {
+    $group: str-slice($name, 0, $slash - 1);
+    $name: str-slice($name, $slash + 1);
+  } @else {
+    $group: nth(map-keys($__iconfont__data), 1);
+  }
+  $group: iconfont-group($group);
+  @if (false == map-has-key($group, $name)) {
+    @warn 'Undefined Iconfont Glyph!';
+    @return '';
+  }
+  @return map-get($group, $name);
+}
+
+// complete mixing to include the icon
+// usage:
+// .my_icon{ @include iconfont('star') }
+@mixin iconfont($icon: null) {
+	$group: g-icon;
+
+	@if ($icon != null) {
+		$slash: str-index($icon, '/');
+		@if ($slash) {
+			$group: str-slice($icon, 0, $slash - 1);
+		} @else {
+			$group: nth(map-keys($__iconfont__data), 1);
+		}
+		content: iconfont-item($icon);
+	}
+
+	speak: none;
+	font-family: $group;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	display: inline-block;
+
+	// Better Font Rendering
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon($icon: null){
+	@include iconfont($icon);
+}

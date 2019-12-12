@@ -1,0 +1,44 @@
+$__iconfont__data: map-merge(if(global_variable_exists('__iconfont__data'), $__iconfont__data, ()), (
+	"g-icon": (
+		"add-outline": "\ea01",
+		"arrow-right": "\ea02",
+		"caret-down": "\ea03",
+		"caret-left": "\ea04",
+		"caret-right": "\ea05",
+		"caret-up": "\ea06",
+		"check": "\ea07",
+		"chevron-down": "\ea08",
+		"chevron-left": "\ea09",
+		"chevron-right": "\ea0a",
+		"chevron-up": "\ea0b",
+		"facebook": "\ea0c",
+		"flickr": "\ea0d",
+		"google": "\ea0e",
+		"image": "\ea0f",
+		"instagram": "\ea10",
+		"mail": "\ea11",
+		"pintrest": "\ea12",
+		"search": "\ea13",
+		"share": "\ea14",
+		"twitter": "\ea15",
+		"view": "\ea16",
+		"youtube": "\ea17"
+	)
+));
+
+
+$create-font-face: true !default; // should the @font-face tag get created?
+
+// should there be a custom class for each icon? will be .filename
+$create-icon-classes: true !default;
+
+// what is the common class name that icons share? in this case icons need to have .icon.filename in their classes
+// this requires you to have 2 classes on each icon html element, but reduced redeclaration of the font family
+// for each icon
+$icon-common-class: 'g-icon' !default;
+
+// if you whish to prefix your filenames, here you can do so.
+// if this string stays empty, your classes will use the filename, for example
+// an icon called star.svg will result in a class called .star
+// if you use the prefix to be 'icon-' it would result in .icon-star
+$icon-prefix: '' !default;

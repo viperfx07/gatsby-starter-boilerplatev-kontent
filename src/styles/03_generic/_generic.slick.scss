@@ -1,0 +1,88 @@
+// Default Variables
+
+// Slick icon entity codes outputs the following
+// "\2190" outputs ascii character "←"
+// "\2192" outputs ascii character "→"
+// "\2022" outputs ascii character "•"
+
+$slick-font-path: "./fonts/";
+$slick-font-family: "g-icon";
+$slick-loader-path: "../";
+$slick-arrow-color: white;
+$slick-dot-color: black;
+$slick-dot-color-active: $slick-dot-color;
+$slick-prev-character: "\2190";
+$slick-next-character: "\2192";
+$slick-dot-character: "\2022";
+$slick-dot-size: 6px;
+$slick-opacity-default: 0.75;
+$slick-opacity-on-hover: 1;
+$slick-opacity-not-active: 0.25;
+
+/* crit:start */
+// @import '~slick-carousel/slick/slick.scss';
+// @import '~slick-carousel/slick/slick-theme.scss';
+/* crit:end */
+
+// ==========================================================================
+// Override so that don't need to use assets from slick
+// ==========================================================================
+
+.slick{
+	$_this: &;
+
+	// {{ .slick-slider }}
+	&-slider {
+	    @include mq(md) {
+	        user-select: initial;
+	    }
+	}
+
+	// {{ .slick-slide }}
+	&-slide {
+	    height: auto;
+	    flex: 1;
+	    outline: 0;
+	    /* crit */
+	    .lt-ie10 {
+	        height: 100%;
+	        /* crit */
+	    }
+	}
+
+	// {{ .slick-track }}
+	&-track {
+	    display: flex;
+	    /* crit */
+	    &:before {
+	        content: none;
+	        /* crit */
+	    }
+	    .lt-ie10 & {
+	        &:before {
+	            content: '';
+	            /* crit */
+	        }
+	    }
+	}
+
+	// {{ .slick-list }}
+	&-list{
+		#{$_this}-loading &{
+		    background: #fff 50% no-repeat;
+		    /* crit */
+		}
+	}
+
+	// {{ .slick-arrow }}
+	&-arrow{
+	}
+
+	// {{ .slick-prev }}
+	&-prev{
+	}
+
+	// {{ .slick-next }}
+	&-next{
+	}
+}

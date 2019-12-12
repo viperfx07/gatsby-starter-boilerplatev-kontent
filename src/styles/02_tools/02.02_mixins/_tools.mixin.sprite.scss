@@ -1,0 +1,6 @@
+@mixin sprite($filename){
+	$spritePathForPostcssAsset: 'sprite/' + $filename;
+	background: spriteurl($filename);
+	width: width($spritePathForPostcssAsset);
+	height: height($spritePathForPostcssAsset);
+}

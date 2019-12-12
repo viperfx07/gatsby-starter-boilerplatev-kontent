@@ -1,0 +1,8 @@
+.blur-up {
+    filter: blur(5px);
+    transition: filter 0.4s;
+    &.lazyloaded {
+        /*! purgecss ignore current */
+        filter: blur(0);
+    }
+}

@@ -1,0 +1,115 @@
+/* crit:start */
+h1,h2,h3,h4,h5,h6{
+	margin: 0;
+}
+
+// Mixin are from _tools.mixin.fontstyles.scss
+h1{
+	@include h1;
+	color: $secondary3;
+}
+h2{
+	@include h2;
+	color: $secondary3;
+}
+h3{
+	@include h3;
+	color: $secondary3;
+}
+h4{
+	@include h4;
+	color: $secondary3;
+}
+h5{
+	@include h5;
+	color: $secondary3;
+}
+h6{
+	@include h6;
+	color: $secondary3;
+}
+
+label{
+	color: $secondary3;
+}
+
+small{
+	@include fssmall;
+}
+
+blockquote {
+	@include fsblockquote;
+	quotes: "�""�""�""�";
+	padding-top: 62px;
+	position: relative;
+	color: #505050;
+
+	@include mq(md) {
+		padding-left: 18px;
+	}
+
+	&:before {
+		// @include icon(quote);
+		color: rgba(#000, .2);
+		font-size: 40px;
+		max-height: 40px;
+		line-height: 1;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+p {
+	margin-bottom: 30px;
+
+	&:empty {
+		display: none;
+	}
+}
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include mq-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		.h1#{$infix} {
+			@include h1;
+		}
+
+		.h2#{$infix} {
+			@include h2;
+		}
+
+		.h3#{$infix} {
+			@include h3;
+		}
+
+		.h4#{$infix} {
+			@include h4;
+		}
+
+		.h5#{$infix} {
+			@include h5;
+		}
+
+		.h6#{$infix} {
+			@include h6;
+		}
+
+		.b-fsbodyregular#{$infix}{
+			@include fsbodyregular;
+		}
+		.b-fssubtitle#{$infix}{
+			@include fssubtitle;
+		}
+		.lead#{$infix}{
+			@include fslead;
+		}
+		.small#{$infix}{
+			@include fssmall;
+		}
+	}
+}
+.b-fsbtn{ @include fsbtn; }
+.b-fsstats{ @include fsstats; }
+
+
